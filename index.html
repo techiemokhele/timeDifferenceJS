@@ -1,0 +1,227 @@
+<html>
+	<head>
+		<title>Calculate Time Difference - Neo Mokhele</title>
+
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Start custom style-->
+      <style>
+         h1 { font-size:1.6rem; }
+         h2 { font-size:1.4rem; }
+         h4 { font-size:1.2rem; }
+          #wrapper td {
+              padding-left:1px;
+              padding-right:1px;
+          }
+          .calc { padding:10px; background:#f9563a; }
+          .calc button img { filter:brightness(0) invert(1); }
+          .calc tr td {
+              padding-top:5px;
+              padding-bottom:5px;
+              background:#f9563a !important;
+          }
+          .calc tr td input[type=number] { 
+              width:83px;
+          }
+          .calc tr td:first-child input[type=number] { 
+              width:95px;
+          }
+          .calc select {
+              width:100%;
+          }
+      @media all and (max-width: 576px) {
+         .calc { width:100%; }
+         .calc td { float:left; }
+        .calc td:nth-child(7) { clear:left; }
+         .calc tr:nth-child(n+1):nth-child(even):nth-child(-n+6) td:nth-child(n+1):nth-child(even):nth-child(-n+10) { padding-top:12px; }
+         .calc select { width:300px; }
+      }
+    </style><!--End custom style-->
+
+	</head><!--End head-->
+
+	<body>
+		
+      <div id="lcol">
+        <center>
+              <div id="doc" >
+                <!-- #BeginEditable "doctext" -->
+                <h1>Work Time Calculator - Neo Mokhele</h1>
+        <p>Time calculator - add or subtract (time duration, time difference):</p>
+        <form name="calcform" autocomplete="off" >
+                <table class="calc">
+                  <tbody>
+                    <tr>
+                      <td>Years</td>
+                        <td> </td>
+                      <td>Months</td>
+                        <td> </td>
+                      <td>Days</td>
+                        <td> </td>
+                      <td>Hours</td>
+                        <td> </td>
+                      <td>Minutes</td>
+                        <td> </td>
+                      <td>Seconds</td>
+                        <td> </td>
+                      </tr>
+                    <tr>
+                  <td><input type="number" id="y1" name="y1" placeholder="YYYY" class="form-control form-control-lg" autofocus></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="mon1" name="mon1" placeholder="MM" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="d1" name="d1" placeholder="DD" class="form-control form-control-lg"></td>
+                    <td> </td>
+                  <td><input type="number" min="0" id="h1" name="h1" placeholder="hh" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="m1" name="m1" placeholder="mm" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="s1" name="s1" placeholder="ss" class="form-control form-control-lg"></td>
+                    <td><button type="button" id="now1" class="btn btn-dark btn-sm">Now</button></td>
+                  </tr>
+                  <tr>
+                    <td colspan="11">
+                         <select id="op" class="form-control form-control-lg">
+                               <option>+ Add</option>
+                               <option>- Subtract</option>
+                         </select>
+                      </td>
+                      <td> </td>
+                    </tr>
+                  <tr>
+                  <td><input type="number" id="y2" name="y2" placeholder="YYYY" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="mon2" name="mon2" placeholder="MM" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="d2" name="d2" placeholder="DD" class="form-control form-control-lg"></td>
+                    <td> </td>
+                  <td><input type="number" min="0" id="h2" name="h2" placeholder="hh" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="m2" name="m2" placeholder="mm" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="s2" name="s2" placeholder="ss" class="form-control form-control-lg"></td>
+                    <td><button type="button" id="now2" class="btn btn-dark btn-sm">Now</button></td>
+                  </tr>
+                  <tr>
+                    <td colspan="12">
+                    <button type="button" title="Calculate" class="btn btn-lg btn-success" onclick="calc()"> Calculate</button>
+                    <button type="reset" title="Reset" class="btn btn-lg btn-warning"> Reset</button>
+                    </td>
+                    </tr>
+                  <tr>
+                  <td><input type="number" min="0" id="y" name="y" placeholder="YYYY" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="mon" name="mon" placeholder="MM" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="d" name="d" placeholder="DD" class="form-control form-control-lg"></td>
+                    <td> </td>
+                  <td><input type="number" min="0" id="h" name="h" placeholder="hh" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="m" name="m" placeholder="mm" class="form-control form-control-lg"></td>
+                    <td>:</td>
+                  <td><input type="number" min="0" id="s" name="s" placeholder="ss" class="form-control form-control-lg"></td>
+                    <td> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </center>
+      </div>
+
+      <!--Start Javascript-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+         $( document ).ready(function() {
+            $("#now1").click( function() { onnow(1);} );
+            $("#now2").click( function() { onnow(2);} );
+         });
+         function onnow(n) {
+            var now = moment();
+            var y=now.year();
+            var mon=now.month()+1;
+            //var d=now.dayOfYear();
+            var d=now.day()+2;
+            var h=now.hour();
+            var m=now.minute();
+            var s=now.second();
+            if( n==1 ) {
+               $("#y1").val(y);
+               $("#mon1").val(mon);
+               $("#d1").val(d);
+               $("#h1").val(h);
+               $("#m1").val(m);
+               $("#s1").val(s);
+            }
+            else {
+               $("#y2").val(y);
+               $("#mon2").val(mon);
+               $("#d2").val(d);
+               $("#h2").val(h);
+               $("#m2").val(m);
+               $("#s2").val(s);
+            }
+         }
+         function calc() {
+            var y1=$("#y1").val();
+            var mon1=$("#mon1").val();
+            var d1=$("#d1").val();
+            var h1=$("#h1").val();
+            var m1=$("#m1").val();
+            var s1=$("#s1").val();
+            var y2=$("#y2").val();
+            var mon2=$("#mon2").val();
+            var d2=$("#d2").val();
+            var h2=$("#h2").val();
+            var m2=$("#m2").val();
+            var s2=$("#s2").val();
+              if( y1=='' ) y1='0';
+              if( mon1=='' ) mon1='0';
+              if( d1=='' ) d1='0';
+              if( h1=='' ) h1='0';
+              if( m1=='' ) m1='0';
+              if( s1=='' ) s1='0';
+              if( y2=='' ) y2='0';
+              if( mon2=='' ) mon2='0';
+              if( d2=='' ) d2='0';
+              if( h2=='' ) h2='0';
+              if( m2=='' ) m2='0';
+              if( s2=='' ) s2='0';
+            y1=parseFloat(y1);
+            mon1=parseFloat(mon1);
+            d1=parseFloat(d1);
+            h1=parseFloat(h1);
+            m1=parseFloat(m1);
+            s1=parseFloat(s1);
+            y2=parseFloat(y2);
+            mon2=parseFloat(mon2);
+            d2=parseFloat(d2);
+            h2=parseFloat(h2);
+            m2=parseFloat(m2);
+            s2=parseFloat(s2);
+            var d1=moment.duration({seconds:s1, minutes:m1, hours:h1, days:d1, months:mon1, years:y1});
+            var d2=moment.duration({seconds:s2, minutes:m2, hours:h2, days:d2, months:mon2, years:y2});
+            var dur;
+            if( $("#op")[0].selectedIndex==0 )
+               dur=d1.add(d2);
+            else
+               dur=d1.subtract(d2);
+            var y=dur.years();
+            var mon=dur.months();
+            var d=dur.days();
+            var h=dur.hours();
+            var m=dur.minutes();
+            var s=dur.seconds();
+            $("#y").val(y);
+            $("#mon").val(mon);
+            $("#d").val(d);
+            $("#h").val(h);
+            $("#m").val(m);
+            $("#s").val(s);
+         }
+      </script>
+      <!--End Javascript-->
+
+	</body><!--End body-->
+</html>
